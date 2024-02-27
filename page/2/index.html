@@ -50,6 +50,62 @@
 
 
 
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
           
 
 
@@ -222,125 +278,56 @@
   
   <main id="main-contain" class="mdui-container mdui-m-t-5">
     
+    <article class="mdui-card mdui-m-b-5 mdui-hoverable">    
+      
+      
+        <div class="post-header"> 
+  <a class="post-header-title" href="/2024/02/01/markdown%E8%AF%AD%E6%B3%95/">markdown语法</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      Posted on:&nbsp;2024-02-01
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      Edited on:&nbsp;2024-02-03
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      In:&nbsp;
+    </span>
+    
+  </div>
+</div>   
+    
 
-<div class="mdui-card mdui-p-a-4 mdui-m-b-5">
-    <div class="page-describe">
-        11 posts in total.
-    </div>
-    <div class="posts-collapse">
-        
-            
-            
-                <div class="collection-title">
-                    <a href="/archives/2024"><h2>2024<small>Archives</small></h2></a>
-                </div>
-                
-            
 
-            <div class="collection-item">
-                <h3><a href="/2024/02/27/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">Linux基础命令</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-27 >
-                    2024.02.27
-                </time>
-            </div>
-        
-            
-            
 
-            <div class="collection-item">
-                <h3><a href="/2024/02/23/python%E5%9F%BA%E7%A1%80/">python基础</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-23 >
-                    2024.02.23
-                </time>
-            </div>
-        
-            
-            
+      
+      
+  <div class="tag-line-space"></div>
 
-            <div class="collection-item">
-                <h3><a href="/2024/02/21/%E4%B8%8A%E4%BC%A0github/">上传github</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-21 >
-                    2024.02.21
-                </time>
-            </div>
+      
+      <div id="achieve-abstract" class="mdui-card-content mdui-p-x-4">
+        <div class="post-abstract mdui-typo ">
+          
+            <h1 id="标题等级"><a href="#标题等级" class="headerlink" title="标题等级"></a>标题等级</h1><p>前面加# 代表这是一级标题<br>前面加## 代表这是二级标题<br>………</p>
+<p>另一种一级标题：输入的文字下面加上&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;(随意多少个&#x3D;)<br>另一种二级标题：输入的文字下面加上———(随意多少个-)</p>
+<h1 id="分割线"><a href="#分割线" class="headerlink" title...
+          
+        </div>
         
-            
-            
+        <div style="text-align:center;">
+          <a class="post-readmore mdui-btn mdui-ripple mdui-btn-raised" href="/2024/02/01/markdown%E8%AF%AD%E6%B3%95/">Read More</a>
+        </div>
+      </div>
+    </article>
 
-            <div class="collection-item">
-                <h3><a href="/2024/02/15/Django%E5%9F%BA%E7%A1%80/">Django基础</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-15 >
-                    2024.02.15
-                </time>
-            </div>
-        
-            
-            
-
-            <div class="collection-item">
-                <h3><a href="/2024/02/14/MySQL/">MySQL</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-14 >
-                    2024.02.14
-                </time>
-            </div>
-        
-            
-            
-
-            <div class="collection-item">
-                <h3><a href="/2024/02/11/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">如何搭建博客</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-11 >
-                    2024.02.11
-                </time>
-            </div>
-        
-            
-            
-
-            <div class="collection-item">
-                <h3><a href="/2024/02/11/JavaScript%E5%9F%BA%E7%A1%80/">JavaScript基础</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-11 >
-                    2024.02.11
-                </time>
-            </div>
-        
-            
-            
-
-            <div class="collection-item">
-                <h3><a href="/2024/02/07/BootStrap%E6%A1%86%E6%9E%B6/">BootStrap框架</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-07 >
-                    2024.02.07
-                </time>
-            </div>
-        
-            
-            
-
-            <div class="collection-item">
-                <h3><a href="/2024/02/06/CSS%E5%9F%BA%E7%A1%80/">CSS基础</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-06 >
-                    2024.02.06
-                </time>
-            </div>
-        
-            
-            
-
-            <div class="collection-item">
-                <h3><a href="/2024/02/03/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></h3>
-                <time itemprop="dateCreated" datetime=2024-02-03 >
-                    2024.02.03
-                </time>
-            </div>
-        
-    </div>
-</div>
 
 
   <nav style="text-align: center;">
     <div class="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="iconfont icon-angle-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </div>
   </nav>
 
