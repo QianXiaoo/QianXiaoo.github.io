@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="个人笔记 &amp; 碎碎念" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Django学习 |  岍翛</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Django学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Django学习
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/03/25/Django%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2024-03-25T06:31:22.000Z" itemprop="datePublished">2024-03-25</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="1-安装django"><a href="#1-安装django" class="headerlink" title="1.安装django"></a>1.安装django</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">c:\python39</span><br><span class="line">	- python.exe</span><br><span class="line">	- Scripts</span><br><span class="line">		- pip.exe</span><br><span class="line">		- django-admin.exe   【工具，创建django项目中的文件和文件夹】</span><br><span class="line">	- Lib</span><br><span class="line">		- 内置模块</span><br><span class="line">		- site-packages</span><br><span class="line">			- openpyxl</span><br><span class="line">			- python-docx</span><br><span class="line">			- flask</span><br><span class="line">			- django     【框架的源码】</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-创建项目"><a href="#2-创建项目" class="headerlink" title="2.创建项目"></a>2.创建项目</h1><h2 id="2-1Pycharm"><a href="#2-1Pycharm" class="headerlink" title="2.1Pycharm"></a>2.1Pycharm</h2><p><img src="https://pic.imgdb.cn/item/65cc5e6e9f345e8d03de1c68.png"></p>
+<h1 id="3-APP"><a href="#3-APP" class="headerlink" title="3.APP"></a>3.APP</h1><p>manage.py</p>
+<p><img src="https://pic.imgdb.cn/item/65cc612d9f345e8d03e6a4ca.png"></p>
+<h1 id="4-快速上手"><a href="#4-快速上手" class="headerlink" title="4.快速上手"></a>4.快速上手</h1><h2 id="4-1完成顺序"><a href="#4-1完成顺序" class="headerlink" title="4.1完成顺序"></a>4.1完成顺序</h2><h3 id="4-1-1确保app已注册"><a href="#4-1-1确保app已注册" class="headerlink" title="4.1.1确保app已注册"></a>4.1.1确保app已注册</h3><p>在django项目中找到settings.py中修改</p>
+<p><img src="https://pic.imgdb.cn/item/65cc61c99f345e8d03e88b6f.png"></p>
+<h3 id="4-1-2编写URL和视图函数对应关系【urls-py】"><a href="#4-1-2编写URL和视图函数对应关系【urls-py】" class="headerlink" title="4.1.2编写URL和视图函数对应关系【urls.py】"></a>4.1.2编写URL和视图函数对应关系【urls.py】</h3><p><img src="https://pic.imgdb.cn/item/65cc62b99f345e8d03eb7547.png"></p>
+<h3 id="4-1-3编写视图函数【views-py】"><a href="#4-1-3编写视图函数【views-py】" class="headerlink" title="4.1.3编写视图函数【views.py】"></a>4.1.3编写视图函数【views.py】</h3><p><img src="https://pic.imgdb.cn/item/65cc634c9f345e8d03ed3f4f.png"></p>
+<h3 id="4-1-4启动django项目"><a href="#4-1-4启动django项目" class="headerlink" title="4.1.4启动django项目"></a>4.1.4启动django项目</h3><ul>
+<li><p>命令行启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Pycharm启动</p>
+</li>
+</ul>
+<h2 id="4-2-再写一个页面"><a href="#4-2-再写一个页面" class="headerlink" title="4.2 再写一个页面"></a>4.2 再写一个页面</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- url -&gt; 函数</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65cc67149f345e8d03f9cb5d.png"></p>
+<h2 id="4-3templates模板"><a href="#4-3templates模板" class="headerlink" title="4.3templates模板"></a>4.3templates模板</h2><p><img src="https://pic.imgdb.cn/item/65cc6abc9f345e8d03053f5b.png"></p>
+<h2 id="4-4-静态文件"><a href="#4-4-静态文件" class="headerlink" title="4.4 静态文件"></a>4.4 静态文件</h2><p>在开发过程中一般将：</p>
+<ul>
+<li>图片</li>
+<li>CSS</li>
+<li>js</li>
+</ul>
+<h3 id="4-4-1-static目录"><a href="#4-4-1-static目录" class="headerlink" title="4.4.1 static目录"></a>4.4.1 static目录</h3><p>在app目录下创建static文件夹</p>
+<p><img src="https://pic.imgdb.cn/item/65cc6cc49f345e8d030bd6de.png"></p>
+<h3 id="4-4-2-引用静态文件"><a href="#4-4-2-引用静态文件" class="headerlink" title="4.4.2 引用静态文件"></a>4.4.2 引用静态文件</h3><p><img src="https://pic.imgdb.cn/item/65cc6e7f9f345e8d0311875e.png"></p>
+<h1 id="5-模板语法"><a href="#5-模板语法" class="headerlink" title="5.模板语法"></a>5.模板语法</h1><p>本质上：在HTML中写一些占位符，由数据对这些占位符进行替换和处理</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;欢迎使用&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_list</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&quot;user_list.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_add</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;添加用户&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tpl</span>(<span class="params">request</span>):</span><br><span class="line"></span><br><span class="line">    name = <span class="string">&quot;寒潮&quot;</span></span><br><span class="line">    roles = [<span class="string">&quot;管理员&quot;</span>,<span class="string">&quot;CEO&quot;</span>,<span class="string">&quot;保安&quot;</span>]</span><br><span class="line">    user_info = &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;郭志&quot;</span>,<span class="string">&quot;salary&quot;</span>:<span class="number">10000</span>, <span class="string">&quot;role&quot;</span>:<span class="string">&quot;CTO&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    data_list = [</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;郭志&quot;</span>,<span class="string">&quot;salary&quot;</span>:<span class="number">10000</span>, <span class="string">&quot;role&quot;</span>:<span class="string">&quot;CTO&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;刘志&quot;</span>, <span class="string">&quot;salary&quot;</span>: <span class="number">10000</span>, <span class="string">&quot;role&quot;</span>: <span class="string">&quot;CTO&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;张志&quot;</span>, <span class="string">&quot;salary&quot;</span>: <span class="number">10000</span>, <span class="string">&quot;role&quot;</span>: <span class="string">&quot;CTO&quot;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;tpl.html&#x27;</span>, &#123;<span class="string">&quot;n1&quot;</span>:name, <span class="string">&quot;n2&quot;</span>:roles, <span class="string">&quot;n3&quot;</span>:user_info, <span class="string">&quot;n4&quot;</span>:data_list&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- tpl.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>模板语法的学习<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; n1 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; n2 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; n2.0 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; n2.1 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; n2.2 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        &#123;% for item in n2 %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line">&#123;&#123; n3 &#125;&#125;</span><br><span class="line">&#123;&#123; n3.name &#125;&#125;</span><br><span class="line">&#123;&#123; n3.salary &#125;&#125;</span><br><span class="line">&#123;&#123; n3.role &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        &#123;% for k,v in n3.items %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; k &#125;&#125;=&#123;&#123; v &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123; n4.0 &#125;&#125;</span><br><span class="line">&#123;&#123; n4.1.name &#125;&#125;</span><br><span class="line">&#123;&#123; n4.1.role &#125;&#125;</span><br><span class="line">&#123;% for item in n4 %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; item.name &#125;&#125; &#123;&#123; item.salary &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% if n1 == &quot;寒潮&quot; %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>大大大大<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>毒毒毒毒<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% if n1 == &quot;寒潮&quot; %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>大大大大<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% elif n1 == &quot;xxx&quot; %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>毒毒毒毒<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>呵呵呵呵<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="6-请求和响应"><a href="#6-请求和响应" class="headerlink" title="6.请求和响应"></a>6.请求和响应</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">something</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># request是一个对象，封装了用户通过浏览器发送过来的所有请求的相关数据</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1.获取请求方式 GET/POST</span></span><br><span class="line">    <span class="built_in">print</span>(request.method)</span><br><span class="line">    <span class="comment"># 2.在URL上传递一些值</span></span><br><span class="line">    <span class="built_in">print</span>(request.GET)</span><br><span class="line">    <span class="comment"># 3.在请求体中请求数据</span></span><br><span class="line">    <span class="built_in">print</span>(request.POST)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.【响应】HttpResponse(&quot;返回内容&quot;),内容字符串内容返回给请求者</span></span><br><span class="line">    <span class="comment"># return HttpResponse(&quot;返回内容&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 5.【响应】读取HTML内容 + 渲染（替换） -&gt; 字符串</span></span><br><span class="line">    <span class="comment"># return render(request,&#x27;something.html&#x27;,&#123;&#x27;title&#x27;:&#x27;来了&#x27;&#125;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 6.【响应】让浏览器重定向到其他页面</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="案例：用户登录"><a href="#案例：用户登录" class="headerlink" title="案例：用户登录"></a>案例：用户登录</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request,<span class="string">&quot;login.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 如果是POST请求，获取用户提交的数据</span></span><br><span class="line">    <span class="comment"># print(request.POST)</span></span><br><span class="line"></span><br><span class="line">    username = request.POST.get(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">    password = request.POST.get(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> username == <span class="string">&#x27;root&#x27;</span> <span class="keyword">and</span> password == <span class="string">&quot;123&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&quot;login.html&quot;</span>, &#123;<span class="string">&quot;error_msg&quot;</span> : <span class="string">&quot;用户名或密码错误&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>用户登录<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/login/&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;用户名&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;密码&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提 交&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color:red;&quot;</span>&gt;</span>&#123;&#123; error_msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="7-数据库操作"><a href="#7-数据库操作" class="headerlink" title="7.数据库操作"></a>7.数据库操作</h1><ul>
+<li><p>MySQL数据库 + pymysql</p>
+</li>
+<li><p>Django开发操作数据库更简单，内部提供了ORM框架。</p>
+</li>
+</ul>
+<h2 id="7-1安装第三方模块"><a href="#7-1安装第三方模块" class="headerlink" title="7.1安装第三方模块"></a>7.1安装第三方模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mysqlclient</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-2-ORM"><a href="#7-2-ORM" class="headerlink" title="7.2 ORM"></a>7.2 ORM</h2><p>ORM可以帮助我们做两件事</p>
+<ul>
+<li><p>创建、修改和删除数据库中的表（不用你写SQL语句）。【无法创建数据库】</p>
+</li>
+<li><p>操作表中的数据（不用写SQL语句）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> ...</span><br><span class="line"><span class="keyword">update</span></span><br><span class="line"><span class="keyword">select</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="1.创建数据库"></a>1.创建数据库</h3><ul>
+<li><p>启动MySQL服务</p>
+</li>
+<li><p>自带工具创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database Django <span class="keyword">DEFAULT</span> CHARSET utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-django连接数据库"><a href="#2-django连接数据库" class="headerlink" title="2. django连接数据库"></a>2. django连接数据库</h3><p>在settings中设置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;Django&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;localhost&#x27;</span>,  <span class="comment"># 或者 MySQL 服务器的 IP 地址</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># MySQL 的默认端口</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-django操作表"><a href="#3-django操作表" class="headerlink" title="3. django操作表"></a>3. django操作表</h3><ul>
+<li>创建表</li>
+<li>删除表</li>
+<li>修改表</li>
+</ul>
+<p>创建表：在models.py文件中：</p>
+<p><img src="https://pic.imgdb.cn/item/65ccc8ad9f345e8d036c1efd.png"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> app01_userinfo(</span><br><span class="line">    id <span class="type">bigint</span> auto_increment <span class="keyword">primary</span> key,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">32</span>),</span><br><span class="line">    password <span class="type">varchar</span>(<span class="number">64</span>),</span><br><span class="line">    age <span class="type">int</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>在Pycharm终端执行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+
+<p>注意：app需要提前注册。</p>
+<p>在表中新增列时，由于已存在的列中可能已有数据，所以新增列必须要指定新增列对应的数据：</p>
+<ul>
+<li><p>1，手动输入一个值</p>
+</li>
+<li><p>设置默认值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age = models.IntegerField(default=2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>允许为空</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = models.IntegerField(null=True, blank=True)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>以后在开发中如果想要对表结构进行调整：</p>
+<ul>
+<li><p>在models.py文件中操作类即可。</p>
+</li>
+<li><p>命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-表中的数据"><a href="#4-表中的数据" class="headerlink" title="4.表中的数据"></a>4.表中的数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在views.py中</span></span><br><span class="line"><span class="keyword">from</span> app01.models <span class="keyword">import</span> Department,UserInfo</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">orm</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># 测试ORM操作表中的数据</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1.新建</span></span><br><span class="line">    <span class="comment"># Department.objects.create(title=&quot;销售部&quot;)</span></span><br><span class="line">    <span class="comment"># Department.objects.create(title=&quot;IT部&quot;)</span></span><br><span class="line">    <span class="comment"># Department.objects.create(title=&quot;运营部&quot;)</span></span><br><span class="line">    <span class="comment"># UserInfo.objects.create(name=&quot;wupeiqi&quot;,password=&quot;323&quot;,age=19)</span></span><br><span class="line">    <span class="comment"># UserInfo.objects.create(name=&quot;朱虎父&quot;,password=&quot;565&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.删除</span></span><br><span class="line">    <span class="comment"># UserInfo.objects.filter(id=2).delete()</span></span><br><span class="line">    <span class="comment"># UserInfo.objects.all().delete()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.获取数据</span></span><br><span class="line">    <span class="comment"># 获取符合条件的所有数据</span></span><br><span class="line">    <span class="comment"># datalist = [行，行，行]   QuerySet类型</span></span><br><span class="line">    <span class="comment"># queryset = UserInfo.objects.all()</span></span><br><span class="line">    <span class="comment"># for obj in queryset:</span></span><br><span class="line">    <span class="comment">#     print(obj.id, obj.name, obj.age)</span></span><br><span class="line">    <span class="comment"># 获取第一条数据</span></span><br><span class="line">    <span class="comment"># obj = UserInfo.objects.filter(id=3).first()</span></span><br><span class="line">    <span class="comment"># print(obj.id, obj.name, obj.age)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.更新数据</span></span><br><span class="line">    <span class="comment"># UserInfo.objects.all().update(password=999)</span></span><br><span class="line">    UserInfo.objects.<span class="built_in">filter</span>(<span class="built_in">id</span>=<span class="number">3</span>).update(password=<span class="number">888</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="案例：用户管理"><a href="#案例：用户管理" class="headerlink" title="案例：用户管理"></a>案例：用户管理</h1><h2 id="1-展示用户列表"><a href="#1-展示用户列表" class="headerlink" title="1.展示用户列表"></a>1.展示用户列表</h2><ul>
+<li><p>url</p>
+</li>
+<li><p>函数</p>
+<blockquote>
+<p>获取所有用户信息</p>
+<p>HTML渲染</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app01.models <span class="keyword">import</span> Department,UserInfo</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info_list</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># 1.获取数据库中所有的用户信息</span></span><br><span class="line">    <span class="comment"># [对象，对象，对象]</span></span><br><span class="line">    data_list = UserInfo.objects.<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.渲染，返回给用户</span></span><br><span class="line">    <span class="keyword">return</span> render(request,<span class="string">&quot;info_list.html&quot;</span>, &#123;<span class="string">&quot;data_list&quot;</span>:data_list&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- info_list.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>INFO列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        &#123;% for obj in data_list %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.id &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.name &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.password &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.age &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-添加用户"><a href="#2-添加用户" class="headerlink" title="2.添加用户"></a>2.添加用户</h2><ul>
+<li><p>url</p>
+</li>
+<li><p>函数</p>
+<blockquote>
+<p>GET，看到页面，输入内容</p>
+<p>POST，提交-&gt;写入到数据库</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app01.models <span class="keyword">import</span> Department,UserInfo</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info_list</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># 1.获取数据库中所有的用户信息</span></span><br><span class="line">    <span class="comment"># [对象，对象，对象]</span></span><br><span class="line">    data_list = UserInfo.objects.<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.渲染，返回给用户</span></span><br><span class="line">    <span class="keyword">return</span> render(request,<span class="string">&quot;info_list.html&quot;</span>, &#123;<span class="string">&quot;data_list&quot;</span>:data_list&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info_add</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&quot;info_add.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取用户提交的数据</span></span><br><span class="line">    user = request.POST.get(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">    pwd = request.POST.get(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line">    age = request.POST.get(<span class="string">&quot;age&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 添加到数据库</span></span><br><span class="line">    UserInfo.objects.create(name=user, password=pwd, age=age)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&quot;/info/list/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- info_add.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>添加用户<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;用户名&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;密码&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;年龄&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提 交&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-删除用户"><a href="#3-删除用户" class="headerlink" title="3.删除用户"></a>3.删除用户</h2><ul>
+<li><p>url</p>
+</li>
+<li><p>函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8000/info/delete/?nid=1</span><br><span class="line">http://127.0.0.1:8000/info/delete/?nid=2</span><br><span class="line">http://127.0.0.1:8000/info/delete/?nid=3</span><br><span class="line"></span><br><span class="line">def 函数(request):</span><br><span class="line">	nid = request.GET.get(&quot;nid&quot;)</span><br><span class="line">	UserInfo.objects.filter(id=nid).delete()</span><br><span class="line">	return HttpResponse(&quot;删除成功&quot;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># views.py</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app01.models <span class="keyword">import</span> Department,UserInfo</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info_list</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="comment"># 1.获取数据库中所有的用户信息</span></span><br><span class="line">    <span class="comment"># [对象，对象，对象]</span></span><br><span class="line">    data_list = UserInfo.objects.<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.渲染，返回给用户</span></span><br><span class="line">    <span class="keyword">return</span> render(request,<span class="string">&quot;info_list.html&quot;</span>, &#123;<span class="string">&quot;data_list&quot;</span>:data_list&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info_add</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&quot;info_add.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取用户提交的数据</span></span><br><span class="line">    user = request.POST.get(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">    pwd = request.POST.get(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line">    age = request.POST.get(<span class="string">&quot;age&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 添加到数据库</span></span><br><span class="line">    UserInfo.objects.create(name=user, password=pwd, age=age)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&quot;/info/list/&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">info_delete</span>(<span class="params">request</span>):</span><br><span class="line">    nid = request.GET.get(<span class="string">&quot;nid&quot;</span>)</span><br><span class="line">    UserInfo.objects.<span class="built_in">filter</span>(<span class="built_in">id</span>=nid).delete()</span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&quot;/info/list/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- info_add.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>添加用户<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;用户名&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;密码&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;年龄&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提 交&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- info_list --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>INFO列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/info/add/&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        &#123;% for obj in data_list %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.id &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.name &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.password &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; obj.age &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/info/delete/?nid=&#123;&#123; obj.id &#125;&#125;&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/25/Django%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/03/25/HTML/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            HTML
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/03/25/C%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">C笔记</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2024
+        <i class="ri-heart-fill heart_icon"></i> Qian Xiaoo
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="岍翛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

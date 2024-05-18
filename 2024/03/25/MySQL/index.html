@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="个人笔记 &amp; 碎碎念" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>MySQL |  岍翛</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-MySQL"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  MySQL
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/03/25/MySQL/" class="article-date">
+  <time datetime="2024-03-25T06:34:29.000Z" itemprop="datePublished">2024-03-25</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">18 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><ul>
+<li>静态：写死了，页面永远长一个样子</li>
+<li>动态页面，页面上的数可以实时的修改和展示</li>
+</ul>
+<h2 id="1-初识网站"><a href="#1-初识网站" class="headerlink" title="1. 初识网站"></a>1. 初识网站</h2><ul>
+<li>默认编写的静态的效果</li>
+<li>动态：需要用到Web框架的功能。</li>
+</ul>
+<p>对于目前的我们来看：都什么可以做数据的存储：</p>
+<ul>
+<li><p>txt文件</p>
+</li>
+<li><p>excel文件</p>
+</li>
+<li><p>专业的软件：数据库管理系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL(*)免费</span><br><span class="line">Oracle/SQLServer/DB2/Access...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-安装MySQL"><a href="#2-安装MySQL" class="headerlink" title="2.安装MySQL"></a>2.安装MySQL</h2><p>MySQL，本质上就是一个软件</p>
+<ul>
+<li>5.x，课堂上：5.7.31版本</li>
+<li>8.x</li>
+</ul>
+<h3 id="2-1-下载"><a href="#2-1-下载" class="headerlink" title="2.1 下载"></a>2.1 下载</h3><p><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a></p>
+<h3 id="2-2-安装补丁"><a href="#2-2-安装补丁" class="headerlink" title="2.2 安装补丁"></a>2.2 安装补丁</h3><h3 id="2-3-安装"><a href="#2-3-安装" class="headerlink" title="2.3 安装"></a>2.3 安装</h3><p>mysql-5.7.31-winx64.zip是免安装的版本。</p>
+<ul>
+<li>解压zip文件</li>
+<li>将解压后的文件</li>
+</ul>
+<h3 id="2-4-创建配置文件"><a href="#2-4-创建配置文件" class="headerlink" title="2.4 创建配置文件"></a>2.4 创建配置文件</h3><p>my.ini</p>
+<p><img src="https://pic.imgdb.cn/item/65c989c99f345e8d0328400a.png"></p>
+<h2 id="3-启动MySQL"><a href="#3-启动MySQL" class="headerlink" title="3.启动MySQL"></a>3.启动MySQL</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1df4y1W7eR/?vd_source=aa6ed6767fbd7555f92644ec7b4ee6eb">视频链接</a></p>
+<h3 id="3-1-在安装目录下创建data文件夹"><a href="#3-1-在安装目录下创建data文件夹" class="headerlink" title="3.1 在安装目录下创建data文件夹"></a>3.1 在安装目录下创建data文件夹</h3><p><img src="https://pic.imgdb.cn/item/65c98a0d9f345e8d0328ee4b.png"></p>
+<h3 id="3-2-设置环境变量"><a href="#3-2-设置环境变量" class="headerlink" title="3.2 设置环境变量"></a>3.2 设置环境变量</h3><p><img src="https://pic.imgdb.cn/item/65c98a3e9f345e8d0329a365.png"></p>
+<p><img src="https://pic.imgdb.cn/item/65c98a5d9f345e8d0329f550.png"></p>
+<h3 id="3-3-启动和关闭MySQL"><a href="#3-3-启动和关闭MySQL" class="headerlink" title="3.3 启动和关闭MySQL"></a>3.3 启动和关闭MySQL</h3><p>以管理员身份运行命令行，将目录切换到安装文件的bin目录下，输入安装命令mysqld -install。</p>
+<p><img src="https://pic.imgdb.cn/item/65c98b1f9f345e8d032bc768.png"></p>
+<p>输入mysqld –initialize –console，初始化data目录，最后一行为MySQL密码：</p>
+<p><img src="https://pic.imgdb.cn/item/65c98baa9f345e8d032d0560.png"></p>
+<p>启动MySQL，输入net start mysql</p>
+<p><img src="https://pic.imgdb.cn/item/65c98c889f345e8d032f0b31.png"></p>
+<p>以root用户进入mysql，输入mysql -u root -p，再输入上面的初始化密码：</p>
+<p><img src="https://pic.imgdb.cn/item/65c98ccf9f345e8d032fbb1b.png"></p>
+<p>修改root的密码，ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘新密码’;</p>
+<p><img src="https://pic.imgdb.cn/item/65c98d789f345e8d03314b00.png"></p>
+<p>输入exit退出，在输入net stop mysql关闭mysql服务：</p>
+<p><img src="https://pic.imgdb.cn/item/65c98dcb9f345e8d03320c17.png"></p>
+<h2 id="4-查看MySQL已有的文件夹（数据库）"><a href="#4-查看MySQL已有的文件夹（数据库）" class="headerlink" title="4.查看MySQL已有的文件夹（数据库）"></a>4.查看MySQL已有的文件夹（数据库）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65c9e7db9f345e8d0329d6f3.png"></p>
+<h2 id="5-汇总命令"><a href="#5-汇总命令" class="headerlink" title="5.汇总命令"></a>5.汇总命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">打开MySQL:net start mysql;</span><br><span class="line">进入MySQL：mysql -u root -p;</span><br><span class="line">设置密码：ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;新密码&#x27;;</span><br><span class="line">查看已有文件夹：show databases;</span><br><span class="line">退出MySQL：exit;</span><br><span class="line">关闭MySQL：net stop mysql;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-忘记密码"><a href="#6-忘记密码" class="headerlink" title="6.忘记密码"></a>6.忘记密码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">默认情况下，启动MySQL时，需要用户输入账户名和密码。</span><br><span class="line"></span><br><span class="line">修改MySQL配置，重新启动MySQL(无账号模式)</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">重新设置密码</span><br><span class="line"></span><br><span class="line">退出</span><br><span class="line"></span><br><span class="line">再重新修MySQL配置文件，重新启动MySQL（需要账号的模式）</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">新密码</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">停止现在的MySQL服务。</span><br><span class="line">修改MySQL配置文件(以无账号模式)：在my.ini中最后加上skip-grant-tables=1</span><br><span class="line">重新启动MySQL</span><br><span class="line">再次登录MySQL时</span><br><span class="line">执行命令设置密码：use mysql</span><br><span class="line">在执行指令修改密码。</span><br><span class="line">重新修改配置文件（需要账号的模式登录）：删除skip-grant-tables=1</span><br><span class="line">重新启动</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-MySQL指令"><a href="#7-MySQL指令" class="headerlink" title="7.MySQL指令"></a>7.MySQL指令</h2><table>
+<thead>
+<tr>
+<th>MySQL</th>
+<th>认知</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据库</td>
+<td>文件夹</td>
+</tr>
+<tr>
+<td>数据表</td>
+<td>文件（EXCEL文件）</td>
+</tr>
+</tbody></table>
+<h3 id="7-1数据库管理（文件夹）"><a href="#7-1数据库管理（文件夹）" class="headerlink" title="7.1数据库管理（文件夹）"></a>7.1数据库管理（文件夹）</h3><ul>
+<li>查看现在已有的数据库（文件夹）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建数据库（文件夹）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create database 数据库名字 DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br><span class="line">create database gx_day DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除数据库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database gx_day;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进入数据库（进入文件夹）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use gx_day;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看文件夹下所有的数据表</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2数据表的管理（文件）"><a href="#7-2数据表的管理（文件）" class="headerlink" title="7.2数据表的管理（文件）"></a>7.2数据表的管理（文件）</h3><ul>
+<li><p>进入数据库（进入文件夹）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前数据库下的所有表（文件）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名称(</span><br><span class="line">	列名称 类型,</span><br><span class="line">    列名称 类型,</span><br><span class="line">    列名称 类型</span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(id <span class="type">int</span>, name <span class="type">varchar</span>(<span class="number">16</span>), age <span class="type">int</span>)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(</span><br><span class="line">    id <span class="type">int</span>, </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>), </span><br><span class="line">    age <span class="type">int</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(</span><br><span class="line">    id <span class="type">int</span>, </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>), <span class="keyword">not</span> <span class="keyword">null</span>, <span class="comment">-- 不允许为空</span></span><br><span class="line">    age <span class="type">int</span> <span class="keyword">null</span>,               <span class="comment">-- 允许为空（默认）</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(</span><br><span class="line">    id <span class="type">int</span>, </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>),</span><br><span class="line">    age <span class="type">int</span> <span class="keyword">default</span> <span class="number">3</span>  <span class="comment">-- 插入数据时，age列的值默认为3</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">primary</span> key,        <span class="comment">-- 主键，不运行为空和重复</span></span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>), </span><br><span class="line">    age <span class="type">int</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<p>主键一般用于表示当前行的数据的编号(类似于人的身份证)。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(</span><br><span class="line">    id <span class="type">int</span> auto_increament <span class="keyword">primary</span> key,  <span class="comment">-- 内部维护，自增</span></span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>), </span><br><span class="line">    age <span class="type">int</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，在创建表时都会这样写：【标准】</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb1(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> auto_increment <span class="keyword">primary</span> key,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>), </span><br><span class="line">    age <span class="type">int</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc tb1;</span><br><span class="line">+-------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------+-------------+------+-----+---------+----------------+</span><br><span class="line">| id    | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name  | varchar(16) | YES  |     | NULL    |                |</span><br><span class="line">| age   | int(11)     | YES  |     | NULL    |                |</span><br><span class="line">+-------+-------------+------+-----+---------+----------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名称</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="7-3常用数据类型"><a href="#7-3常用数据类型" class="headerlink" title="7.3常用数据类型"></a>7.3常用数据类型</h3><ul>
+<li><p>tinyint</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有符号，取值范围：-128~127(有正有负)【默认】</span><br><span class="line">无符号，取值范围：0~255(只有正)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb3(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> auto_increment <span class="keyword">primary</span> key,</span><br><span class="line">    age tinyint <span class="comment">-- 有符号：取值范围：-128~127</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb3(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> auto_increment <span class="keyword">primary</span> key,</span><br><span class="line">    age tinyint unsigned <span class="comment">-- 无符号：取值范围：0~255</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>        表示有符号，取值范围：<span class="number">-2147483648</span><span class="operator">~</span><span class="number">2147483647</span></span><br><span class="line"><span class="type">int</span> unsigned 表示无符号，取值范围：<span class="number">0</span><span class="operator">~</span><span class="number">4294967295</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bigint</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有符号，取值范围：</span><br><span class="line">无符号，取值范围：</span><br></pre></td></tr></table></figure>
+
+<p>练习题</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 创建表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb2(</span><br><span class="line">    id <span class="type">bigint</span> <span class="keyword">not</span> <span class="keyword">null</span> auto_increment <span class="keyword">primary</span> key,</span><br><span class="line">    salary <span class="type">int</span>,</span><br><span class="line">    age tinyint <span class="comment">-- 有符号：取值范围：-128~127</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br><span class="line"># 插入数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb2(salary,age) <span class="keyword">values</span>(<span class="number">10000</span>,<span class="number">18</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb2(salary,age) <span class="keyword">values</span>(<span class="number">20000</span>,<span class="number">28</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb2(salary,age) <span class="keyword">values</span>(<span class="number">30000</span>,<span class="number">38</span>),(<span class="number">40000</span>,<span class="number">40</span>);</span><br><span class="line"># 查看表中的数据</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tb2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>float</p>
+</li>
+<li><p>double</p>
+</li>
+<li><p>decimal</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">准确的小数值，m是数字总个数（负号不算），d是小数点后个数，m最大值为<span class="number">65</span>，d最大值为<span class="number">30</span>。</span><br><span class="line">例如：</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb3(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	salary <span class="type">decimal</span>(<span class="number">8</span>,<span class="number">2</span>)</span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb3(salary) <span class="keyword">values</span>(<span class="number">1.28</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb3(salary) <span class="keyword">values</span>(<span class="number">5.289</span>); # 四舍五入</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb3(salary) <span class="keyword">values</span>(<span class="number">5.282</span>); # 四舍五入</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb3(salary) <span class="keyword">values</span>(<span class="number">1221125.28</span>); # 超出范围</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>char(m)，查询速度快</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">定长字符串，m代表字符串的长度，最多可容纳<span class="number">255</span>个字符。</span><br><span class="line"><span class="type">char</span>(<span class="number">11</span>) 固定用<span class="number">11</span>个字符存储，哪怕真实没有<span class="number">11</span>个字符，也会按照<span class="number">11</span>存储</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb4(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	mobile <span class="type">char</span>(<span class="number">11</span>)</span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb4(mobile) <span class="keyword">values</span>(&quot;151&quot;);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb4(mobile) <span class="keyword">values</span>(&quot;15112342122&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>varchar(m)，节省空间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">变长字符串，m代表字符的长度， 最大字节<span class="number">65535</span>字节<span class="operator">/</span><span class="number">3</span> <span class="operator">=</span> 最大的m</span><br><span class="line"><span class="type">varchar</span>(<span class="number">11</span>)，真实数据有多少就按多长存储</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb5(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	mobile <span class="type">varchar</span>(<span class="number">11</span>)</span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb4(mobile) <span class="keyword">values</span>(&quot;151&quot;);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb4(mobile) <span class="keyword">values</span>(&quot;15112342122&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>text</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text数据类型用于保存变长的大字符串，可以多到<span class="number">65535</span>(<span class="number">2</span><span class="operator">*</span><span class="operator">*</span><span class="number">16</span> <span class="operator">-</span> <span class="number">1</span>)个字符。</span><br><span class="line">一般情况下，长文本会用text类型。例如：文章、新闻等。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb6(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	title <span class="type">varchar</span>(<span class="number">128</span>),</span><br><span class="line">	content text</span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mediumtext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(2**24 - 1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>longtext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(2**32 - 1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>datetime</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YYYY-MM-DD HH:MM:SS</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>date</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YYYY-MM-DD</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>练习题：用户表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb7(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">64</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    password <span class="type">char</span>(<span class="number">64</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    email <span class="type">varchar</span>(<span class="number">64</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    age tinyint,</span><br><span class="line">    salary <span class="type">decimal</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    ctime datetime</span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb7(name,password,email,age,salary,ctime) <span class="keyword">values</span>(&quot;吴佩其&quot;,&quot;123&quot;,&quot;xx@live.com&quot;,<span class="number">19</span>,<span class="number">1000.20</span>,&quot;2011-11-11 11:11:10&quot;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb7(name,password,email,age,salary,ctime) <span class="keyword">values</span>(&quot;嘀嘀嘀&quot;,&quot;123&quot;,&quot;xx@live.com&quot;,<span class="number">19</span>,<span class="number">1000.20</span>,&quot;2011-11-11 11:11:10&quot;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb7(name,password,email,age,salary,ctime) <span class="keyword">values</span>(&quot;哈哈哈&quot;,&quot;123&quot;,&quot;xx@live.com&quot;,<span class="number">19</span>,<span class="number">1000.20</span>,&quot;2011-11-11 11:11:10&quot;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb7(name,password,email,age,salary,ctime) <span class="keyword">values</span>(&quot;嘿嘿嘿&quot;,&quot;123&quot;,&quot;xx@live.com&quot;,<span class="number">19</span>,<span class="number">1000.20</span>,&quot;2011-11-11 11:11:10&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4数据行操作"><a href="#7-4数据行操作" class="headerlink" title="7.4数据行操作"></a>7.4数据行操作</h3><h4 id="1-新增数据"><a href="#1-新增数据" class="headerlink" title="1.新增数据"></a>1.新增数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列名,列名) <span class="keyword">values</span>(值，值);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列名,列名) <span class="keyword">values</span>(值，值),<span class="keyword">values</span>(值，值);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-删除数据"><a href="#2-删除数据" class="headerlink" title="2.删除数据"></a>2.删除数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名; # 删除表中所有数据</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">4</span> <span class="keyword">and</span> name<span class="operator">=</span>&quot;嘿嘿嘿&quot;;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">4</span> <span class="keyword">or</span> name<span class="operator">=</span>&quot;嘿嘿嘿&quot;;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">4</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">&gt;=</span> <span class="number">4</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">!=</span> <span class="number">4</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-修改数据"><a href="#3-修改数据" class="headerlink" title="3.修改数据"></a>3.修改数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="operator">=</span>值;</span><br><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="operator">=</span>值,列<span class="operator">=</span>值;</span><br><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="operator">=</span>值 <span class="keyword">where</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> tb7 <span class="keyword">set</span> password<span class="operator">=</span>&quot;哈哈哈&quot;;</span><br><span class="line"><span class="keyword">update</span> tb7 <span class="keyword">set</span> email<span class="operator">=</span>&quot;哈哈哈&quot; <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">5</span>;</span><br><span class="line"><span class="keyword">update</span> tb7 <span class="keyword">set</span> age<span class="operator">=</span>age<span class="operator">+</span><span class="number">10</span> <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-查询数据"><a href="#4-查询数据" class="headerlink" title="4.查询数据"></a>4.查询数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名称;</span><br><span class="line"><span class="keyword">select</span> 列名称,列名称 <span class="keyword">from</span> 表名称;</span><br><span class="line"><span class="keyword">select</span> 列名称,列名称 <span class="keyword">from</span> 表名称 <span class="keyword">where</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tb7;</span><br><span class="line"><span class="keyword">select</span> id,name <span class="keyword">from</span> tb7;</span><br><span class="line"><span class="keyword">select</span> id,name <span class="keyword">from</span> tb7 <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">10</span>;</span><br><span class="line"><span class="keyword">select</span> id,name <span class="keyword">from</span> tb7 <span class="keyword">where</span> name<span class="operator">=</span>&quot;xx&quot; <span class="keyword">and</span> password<span class="operator">=</span>&quot;xx&quot;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-员工管理"><a href="#8-员工管理" class="headerlink" title="8.员工管理"></a>8.员工管理</h2><ul>
+<li><p>使用MySQL内置工具（命令）</p>
+<blockquote>
+<p>创建数据库：unicom</p>
+<p>数据一张表：admin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">表名：admin</span><br><span class="line">列：</span><br><span class="line">	id,整型，自增，主键</span><br><span class="line">	username 字符串 不为空，</span><br><span class="line">	password 字符串 不为空，</span><br><span class="line">	mobile 字符串 不为空</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>Python代码实现：</p>
+<blockquote>
+<p>添加用户</p>
+<p>删除用户</p>
+<p>查看用户</p>
+<p>更新用户信息</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="8-1创建表结构"><a href="#8-1创建表结构" class="headerlink" title="8.1创建表结构"></a>8.1创建表结构</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database unicom <span class="keyword">DEFAULT</span> CHARSET utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use unicom;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> admin(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span> auto_increment <span class="keyword">primary</span> key,</span><br><span class="line">    username <span class="type">varchar</span>(<span class="number">16</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    password <span class="type">varchar</span>(<span class="number">16</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    mobile <span class="type">char</span>(<span class="number">11</span>) <span class="keyword">not</span> <span class="keyword">null</span></span><br><span class="line">)<span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-Python操作MySQL"><a href="#8-2-Python操作MySQL" class="headerlink" title="8.2 Python操作MySQL"></a>8.2 Python操作MySQL</h3><h4 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="1.创建数据库"></a>1.创建数据库</h4><blockquote>
+<p>用Python代码连接MySQL并发送指令</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.连接MySQL</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>,port=<span class="number">3306</span>,user=<span class="string">&quot;root&quot;</span>,password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>,db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line"><span class="comment"># sql = &quot;insert into admin(username,password,mobile) values(%s,%s,%s)&quot;</span></span><br><span class="line"><span class="comment"># cursor.execute(sql, [&quot;岍翛&quot;, &quot;qwe123&quot;, &quot;12312312312&quot;])</span></span><br><span class="line">cursor.execute(<span class="string">&quot;insert into admin(username,password,mobile) values(&#x27;wupeiqi&#x27;,&#x27;qwe123&#x27;,&#x27;12312312312&#x27;)&quot;</span>)</span><br><span class="line"><span class="comment"># sql = &quot;insert into admin(username,password,mobile) values(%(n1)s,%(n2)s,%(n3)s)&quot;</span></span><br><span class="line"><span class="comment"># cursor.execute(sql, &#123;&quot;n1&quot;:&quot;急急急&quot;, &quot;n2&quot;:&quot;qwe123&quot;, &quot;n3&quot;:&quot;12312312312&quot;&#125;)</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.关闭连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<p>动态创建数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    user = <span class="built_in">input</span>(<span class="string">&quot;用户名：&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> user.upper() == <span class="string">&#x27;Q&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    pwd = <span class="built_in">input</span>(<span class="string">&quot;密码：&quot;</span>)</span><br><span class="line">    mobile = <span class="built_in">input</span>(<span class="string">&quot;手机号：&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1.连接MySQL</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>,port=<span class="number">3306</span>,user=<span class="string">&quot;root&quot;</span>,password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>,db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">    sql = <span class="string">&quot;insert into admin(username,password,mobile) values(%s,%s,%s)&quot;</span></span><br><span class="line">    cursor.execute(sql, [user, pwd, mobile])</span><br><span class="line">    conn.commit()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.关闭连接</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-查询数据"><a href="#2-查询数据" class="headerlink" title="2.查询数据"></a>2.查询数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.连接MySQL</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>,port=<span class="number">3306</span>,user=<span class="string">&quot;root&quot;</span>,password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>,db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">sql = <span class="string">&quot;select * from admin where id &gt; %s&quot;</span></span><br><span class="line">cursor.execute(sql, [<span class="number">2</span>, ])</span><br><span class="line"><span class="comment"># cursor.fetchall()是获取符合条件的所有数据，得到的是[字典，字典,]</span></span><br><span class="line">datalist = cursor.fetchall() <span class="comment"># cursor.fetone()是获取符合条件的第一条数据</span></span><br><span class="line"><span class="keyword">for</span> row_dict <span class="keyword">in</span> datalist:</span><br><span class="line">    <span class="built_in">print</span>(row_dict)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.关闭连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-删除数据"><a href="#3-删除数据" class="headerlink" title="3.删除数据"></a>3.删除数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.连接MySQL</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>,port=<span class="number">3306</span>,user=<span class="string">&quot;root&quot;</span>,password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>,db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">sql = <span class="string">&quot;delete from admin where id=%s&quot;</span></span><br><span class="line">cursor.execute(sql, [<span class="number">3</span>, ])</span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.关闭连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-修改数据"><a href="#4-修改数据" class="headerlink" title="4.修改数据"></a>4.修改数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.连接MySQL</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>,port=<span class="number">3306</span>,user=<span class="string">&quot;root&quot;</span>,password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>,db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">sql = <span class="string">&quot;update admin set mobile=%s where id=%s&quot;</span></span><br><span class="line">cursor.execute(sql, [<span class="string">&quot;18888888888&quot;</span>, <span class="number">4</span>, ])</span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.关闭连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<p>强调：</p>
+<ul>
+<li><p>在进行新增、删除、修改时，一定要记得commit，不然数据库没有数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cursor.execute(<span class="string">&quot;..&quot;</span>)</span><br><span class="line">conn.commit()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在查询时，不需要commit，执行fetchall&#x2F;fetchone</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;select * from admin where id &gt; %s&quot;</span></span><br><span class="line">cursor.execute(sql, [<span class="number">2</span>, ])</span><br><span class="line">datalist = cursor.fetone()</span><br><span class="line">datalist = cursor.fetchall()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于SQL语句，不要用Python的字符串格式化进行拼接（会被SQL注入），一定要用execute+参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cursor.execute(<span class="string">&quot;.%s......, %s&quot;</span>,[<span class="string">&quot;xx&quot;</span>,<span class="string">&quot;xx&quot;</span>])</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="9-案例：Flask-MySQL"><a href="#9-案例：Flask-MySQL" class="headerlink" title="9.案例：Flask+MySQL"></a>9.案例：Flask+MySQL</h2><h3 id="9-1新增用户"><a href="#9-1新增用户" class="headerlink" title="9.1新增用户"></a>9.1新增用户</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.py</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/add/user&quot;</span>, methods=[<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_user</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&quot;add_user.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">    username = request.form.get(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">    password = request.form.get(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line">    mobile = request.form.get(<span class="string">&quot;mobile&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1.连接MySQL</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>, port=<span class="number">3306</span>, user=<span class="string">&quot;root&quot;</span>, password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>, db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(request.form)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">    sql = <span class="string">&quot;insert into admin(username,password,mobile) values(%s, %s, %s)&quot;</span></span><br><span class="line">    cursor.execute(sql, [username, password, mobile])</span><br><span class="line">    conn.commit()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.关闭连接</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    conn.close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;添加成功&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- add_user.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>添加用户<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/add/user&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;用户名&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;密码&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;mobile&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;手机号&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提 交&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2查询所有用户"><a href="#9-2查询所有用户" class="headerlink" title="9.2查询所有用户"></a>9.2查询所有用户</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- show_user.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>用户列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        &#123;% for item in data_list %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; item.id &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; item.username &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; item.password &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; item.mobile &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/add/user&quot;</span>, methods=[<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_user</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&quot;add_user.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">    username = request.form.get(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">    password = request.form.get(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line">    mobile = request.form.get(<span class="string">&quot;mobile&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1.连接MySQL</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>, port=<span class="number">3306</span>, user=<span class="string">&quot;root&quot;</span>, password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>, db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(request.form)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">    sql = <span class="string">&quot;insert into admin(username,password,mobile) values(%s, %s, %s)&quot;</span></span><br><span class="line">    cursor.execute(sql, [username, password, mobile])</span><br><span class="line">    conn.commit()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.关闭连接</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    conn.close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;添加成功&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/show/user&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">show_user</span>():</span><br><span class="line">    <span class="comment"># 1.连接MySQL</span></span><br><span class="line">    conn = pymysql.connect(host=<span class="string">&quot;127.0.0.1&quot;</span>, port=<span class="number">3306</span>, user=<span class="string">&quot;root&quot;</span>, password=<span class="string">&quot;123456&quot;</span>, charset=<span class="string">&quot;utf8&quot;</span>, db=<span class="string">&#x27;unicom&#x27;</span>)</span><br><span class="line">    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(request.form)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.发送指令（千万不要用字符串格式化做SQL的拼接，安全隐患SQL注入）</span></span><br><span class="line">    sql = <span class="string">&quot;select * from admin&quot;</span></span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    data_list = cursor.fetchall()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.关闭连接</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    conn.close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;show_user.html&quot;</span>, data_list=data_list)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/25/MySQL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/03/25/python%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            python基础
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/03/25/markdown/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">markdown</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2024
+        <i class="ri-heart-fill heart_icon"></i> Qian Xiaoo
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="岍翛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
